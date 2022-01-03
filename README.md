@@ -3,7 +3,7 @@
 ## The Odin Project
 
 ## Introduction
-This is a calculator that allows the user to do basic math operators, string together several operations, delete a value entered by mistake and clear all. This project is a portfolio project from The Odin Project
+This is a calculator that allows the user to do basic math operators, string together several operations, delete a number entered by mistake and clear all. This project is a portfolio project from The Odin Project
 
 ## Technologies
 This project is created using:
