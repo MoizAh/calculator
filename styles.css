@@ -90,6 +90,6 @@ button[value="AC"] {
   grid-column: span 2;
 }
 
-button[value="="] {
+button[value="0"] {
   grid-column: span 2;
 }
