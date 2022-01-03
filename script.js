@@ -1,4 +1,6 @@
-const display = document.querySelector(".display h1");
+// Referencing Elements
+const display = document.querySelector(".display");
+const displayText = document.querySelector(".display-text");
 const allClear = document.querySelector(".all-clear");
 const clear = document.querySelector(".clear");
 const division = document.querySelector(".division");
@@ -18,6 +20,7 @@ const zero = document.querySelector(".zero");
 const decimal = document.querySelector(".decimal");
 const equals = document.querySelector(".equals");
 
+// Basic Math Operators
 const add = (one, two) => {
   return one + two;
 };
@@ -34,6 +37,7 @@ const divide = (one, two) => {
   return one / two;
 };
 
+// Operate Function
 const operate = (operator, numOne, numTwo) => {
   if (operator == "+") {
     return add(numOne, numTwo);
@@ -46,6 +50,7 @@ const operate = (operator, numOne, numTwo) => {
   }
 };
 
+// Event Listeners for to calculate and display results
 let num = [];
 let firstValue;
 let secondValue;
@@ -53,104 +58,110 @@ let operation = [];
 
 allClear.addEventListener("click", () => {
   location.reload();
-  display.textContent = "0";
+  displayText.textContent = "0";
 });
 clear.addEventListener("click", () => {
   num.pop();
-  display.textContent = +num.join("");
+  displayText.textContent = +num.join("");
 });
 division.addEventListener("click", () => {
-  display.textContent = "/";
-  operation.push(display.textContent);
+  displayText.textContent = "/";
+  operation.push(displayText.textContent);
   numOne();
   multiOperate();
   num = [];
 });
 seven.addEventListener("click", () => {
-  display.textContent = 7;
-  num.push(display.textContent);
-  display.textContent = +num.join("");
+  displayText.textContent = 7;
+  num.push(displayText.textContent);
+  displayText.textContent = +num.join("");
 });
 eight.addEventListener("click", () => {
-  display.textContent = 8;
-  num.push(display.textContent);
-  display.textContent = +num.join("");
+  displayText.textContent = 8;
+  num.push(displayText.textContent);
+  displayText.textContent = +num.join("");
 });
 nine.addEventListener("click", () => {
-  display.textContent = 9;
-  num.push(display.textContent);
-  display.textContent = +num.join("");
+  displayText.textContent = 9;
+  num.push(displayText.textContent);
+  displayText.textContent = +num.join("");
 });
 multiplication.addEventListener("click", () => {
-  display.textContent = "*";
-  operation.push(display.textContent);
+  displayText.textContent = "*";
+  operation.push(displayText.textContent);
   numOne();
   multiOperate();
   num = [];
 });
 four.addEventListener("click", () => {
-  display.textContent = 4;
-  num.push(display.textContent);
-  display.textContent = +num.join("");
+  displayText.textContent = 4;
+  num.push(displayText.textContent);
+  displayText.textContent = +num.join("");
 });
 five.addEventListener("click", () => {
-  display.textContent = 5;
-  num.push(display.textContent);
-  display.textContent = +num.join("");
+  displayText.textContent = 5;
+  num.push(displayText.textContent);
+  displayText.textContent = +num.join("");
 });
 six.addEventListener("click", () => {
-  display.textContent = 6;
-  num.push(display.textContent);
-  display.textContent = +num.join("");
+  displayText.textContent = 6;
+  num.push(displayText.textContent);
+  displayText.textContent = +num.join("");
 });
 subtraction.addEventListener("click", () => {
-  display.textContent = "-";
-  operation.push(display.textContent);
+  displayText.textContent = "-";
+  operation.push(displayText.textContent);
   numOne();
   multiOperate();
   num = [];
 });
 one.addEventListener("click", () => {
-  display.textContent = 1;
-  num.push(display.textContent);
-  display.textContent = +num.join("");
+  displayText.textContent = 1;
+  num.push(displayText.textContent);
+  displayText.textContent = +num.join("");
 });
 two.addEventListener("click", () => {
-  display.textContent = 2;
-  num.push(display.textContent);
-  display.textContent = +num.join("");
+  displayText.textContent = 2;
+  num.push(displayText.textContent);
+  displayText.textContent = +num.join("");
 });
 three.addEventListener("click", () => {
-  display.textContent = 3;
-  num.push(display.textContent);
-  display.textContent = +num.join("");
+  displayText.textContent = 3;
+  num.push(displayText.textContent);
+  displayText.textContent = +num.join("");
 });
 addition.addEventListener("click", () => {
-  display.textContent = "+";
-  operation.push(display.textContent);
+  displayText.textContent = "+";
+  operation.push(displayText.textContent);
   numOne();
   multiOperate();
   num = [];
 });
 zero.addEventListener("click", () => {
-  display.textContent = 0;
-  num.push(display.textContent);
-  display.textContent = +num.join("");
+  displayText.textContent = 0;
+  num.push(displayText.textContent);
+  displayText.textContent = +num.join("");
 });
 decimal.addEventListener("click", () => {
-  display.textContent = ".";
-  num.push(display.textContent);
-  display.textContent = +num.join("");
+  displayText.textContent = ".";
+  num.push(displayText.textContent);
+  displayText.textContent = num.join("");
+  if (num.includes(".")) {
+    decimal.disabled = true;
+  }
 });
 equals.addEventListener("click", () => {
   numTwo();
-  display.textContent = operate(operation, firstValue, secondValue);
-  firstValue = Number(display.textContent);
+  displayText.textContent = operate(operation, firstValue, secondValue).toFixed(
+    2
+  );
+  firstValue = Number(displayText.textContent);
   secondValue = 0;
   num = [];
   operation.shift();
 });
 
+// Storing inputs into variables
 const numOne = () => {
   if (firstValue != null) {
     return firstValue;
@@ -165,11 +176,16 @@ const numTwo = () => {
   return secondValue;
 };
 
+// String together several operations
 const multiOperate = () => {
   if (operation.length == 2 && firstValue != null) {
     secondValue = +num.join("");
-    display.textContent = operate(operation[0], firstValue, secondValue);
-    firstValue = Number(display.textContent);
+    displayText.textContent = operate(
+      operation[0],
+      firstValue,
+      secondValue
+    ).toFixed(2);
+    firstValue = Number(displayText.textContent);
     secondValue = 0;
     operation.shift();
   }
